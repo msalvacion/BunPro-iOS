@@ -3,9 +3,7 @@
 //  Copyright © 2019 Andreas Braun. All rights reserved.
 //
 
-#if canImport(Combine)
 import Combine
-#endif
 import Foundation
 
 protocol StatusObserverProtocol {
@@ -23,7 +21,6 @@ class StatusObserver {
     }
 }
 
-@available(iOS 13.0, *)
 private class StatusObserverImplementationCombine: StatusObserverProtocol {
     private var cancellables: Set<AnyCancellable> = []
 
@@ -67,68 +64,6 @@ private class StatusObserverImplementationCombine: StatusObserverProtocol {
                 .receive(on: RunLoop.main)
                 .sink { [weak self] _ in self?.didUpdateReview?() }
                 .store(in: &cancellables)
-        }
-    }
-}
-
-private class StatusObserverIplementationNotificationCenter: StatusObserverProtocol {
-    private var logoutObserver: NotificationToken?
-    private var beginUpdateObserver: NotificationToken?
-    private var endUpdateObserver: NotificationToken?
-    private var pendingModificationObserver: NotificationToken?
-
-    deinit {
-        [logoutObserver, beginUpdateObserver, endUpdateObserver, pendingModificationObserver]
-            .compactMap { $0 }
-            .forEach { NotificationCenter.default.removeObserver($0) }
-    }
-
-    var didLogout: (() -> Void)? {
-        didSet {
-            logoutObserver = NotificationCenter
-                .default.observe(
-                    name: .ServerDidLogoutNotification,
-                    object: nil,
-                    queue: OperationQueue.main) { [weak self] _ in
-                        self?.didLogout?()
-                }
-        }
-    }
-
-    var willBeginUpdating: (() -> Void)? {
-        didSet {
-            beginUpdateObserver = NotificationCenter
-                .default
-                .observe(
-                    name: .BunProWillBeginUpdating,
-                    object: nil,
-                    queue: OperationQueue.main) { [weak self] _ in
-                        self?.willBeginUpdating?()
-                }
-        }
-    }
-    var didEndUpdating: (() -> Void)? {
-        didSet {
-            endUpdateObserver = NotificationCenter
-                .default
-                .observe(
-                    name: .BunProDidEndUpdating,
-                    object: nil,
-                    queue: OperationQueue.main) { [weak self] _ in
-                        self?.didEndUpdating?()
-                }
-        }
-    }
-    var didUpdateReview: (() -> Void)? {
-        didSet {
-            pendingModificationObserver = NotificationCenter
-                .default
-                .observe(
-                    name: .BunProDidModifyReview,
-                    object: nil,
-                    queue: OperationQueue.main) { [weak self] _ in
-                        self?.didUpdateReview?()
-                }
         }
     }
 }

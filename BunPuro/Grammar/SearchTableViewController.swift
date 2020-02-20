@@ -122,7 +122,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
         swipeActionsConfiguration(for: searchDataSource.grammar(at: indexPath))
     }
 
-    @available(iOS 13.0, *)
     override func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
         contextMenuConfiguration(for: searchDataSource.grammar(at: indexPath))
     }
