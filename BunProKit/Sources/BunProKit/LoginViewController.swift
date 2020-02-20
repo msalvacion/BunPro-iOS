@@ -26,11 +26,7 @@ final class LoginViewController: UITableViewController {
     private let keychain = Keychain()
     
     override init(style: UITableView.Style) {
-        if #available(iOS 13.0, *) {
-            super.init(style: .insetGrouped)
-        } else {
-            super.init(style: .grouped)
-        }
+        super.init(style: .insetGrouped)
     }
     
     required init?(coder: NSCoder) {
@@ -46,7 +42,7 @@ final class LoginViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.cellLayoutMarginsFollowReadableWidth = true
     }
-        
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
@@ -151,7 +147,7 @@ final class LoginViewController: UITableViewController {
         
         NetworkHandler.shared.queue.addOperation(loginProcedure)
     }
-
+    
     private func updateUI(enabled: Bool) {
         emailTextFieldCell?.isEnabled = enabled
         passwordTextFieldCell?.isEnabled = enabled
@@ -166,12 +162,12 @@ extension CellIdentifiable {
 }
 
 final private class TextFieldCell: UITableViewCell, CellIdentifiable {
-
+    
     var title: String? {
         get { textField.text }
         set { textField.text = newValue }
     }
-        
+    
     var textContentType: UITextContentType {
         get { textField.textContentType }
         set {
@@ -207,7 +203,7 @@ final private class TextFieldCell: UITableViewCell, CellIdentifiable {
         get { textField.isSecureTextEntry }
         set { textField.isSecureTextEntry = newValue }
     }
-        
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         
         self.textField = UITextField()
@@ -239,7 +235,7 @@ final private class TextFieldCell: UITableViewCell, CellIdentifiable {
 }
 
 final private class ButtonCell: UITableViewCell, CellIdentifiable {
-
+    
     var title: String? {
         get { label.text }
         set { label.text = newValue }

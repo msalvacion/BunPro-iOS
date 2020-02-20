@@ -70,12 +70,10 @@ final class SettingsTableViewController: UITableViewController, SegueHandler {
             self?.updateUI()
         }
 
-        if #available(iOS 13.0, *) {
-            appearanceLabel.text = UserDefaults.standard.userInterfaceStyle.localizedTitle
+        appearanceLabel.text = UserDefaults.standard.userInterfaceStyle.localizedTitle
 
-            appearanceObserver = UserDefaults.standard.observe(\.userInterfaceStyle) { defaults, _ in
-                self.appearanceLabel.text = defaults.userInterfaceStyle.localizedTitle
-            }
+        appearanceObserver = UserDefaults.standard.observe(\.userInterfaceStyle) { defaults, _ in
+            self.appearanceLabel.text = defaults.userInterfaceStyle.localizedTitle
         }
 
         updateUI()
@@ -133,9 +131,7 @@ final class SettingsTableViewController: UITableViewController, SegueHandler {
 
             switch indexPath.row {
             case 0:
-                if #available(iOS 13.0, *) {
-                    didSelectAppearanceCell(cell)
-                }
+                didSelectAppearanceCell(cell)
 
             default:
                 break
@@ -338,11 +334,7 @@ final class SettingsTableViewController: UITableViewController, SegueHandler {
 
         switch section {
         case .appearance:
-            if #available(iOS 13.0, *) {
-                return UITableView.automaticDimension
-            } else {
-                return CGFloat.leastNormalMagnitude
-            }
+            return UITableView.automaticDimension
 
         default:
             return UITableView.automaticDimension

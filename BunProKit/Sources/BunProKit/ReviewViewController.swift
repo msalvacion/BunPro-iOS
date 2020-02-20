@@ -18,18 +18,18 @@ public enum Website {
     case review
     case study
     case cram
-
+    
     var url: URL {
         switch self {
         case .main:
             return URL(string: "https://www.bunpro.jp")!
-
+            
         case .review:
             return URL(string: "https://www.bunpro.jp/app_study")!
-
+            
         case .study:
             return URL(string: "https://www.bunpro.jp/app_learn")!
-
+            
         case .cram:
             return URL(string: "https://www.bunpro.jp/app_cram")!
         }
@@ -43,11 +43,11 @@ public final class ReviewViewController: UIViewController, WKNavigationDelegate 
     public var website: Website = .main {
         didSet {
             guard oldValue != website else { return }
-
+            
             loadWebsite()
         }
     }
-
+    
     private var webView: WKWebView! {
         didSet {
             webView.navigationDelegate = self
@@ -55,17 +55,12 @@ public final class ReviewViewController: UIViewController, WKNavigationDelegate 
     }
     
     private var activityIndicator: UIActivityIndicatorView!
-
+    
     override public func viewDidLoad() {
         super.viewDidLoad()
         
-        if #available(iOS 13.0, *) {
-            view.backgroundColor = .systemBackground
-            activityIndicator = UIActivityIndicatorView(style: .medium)
-        } else {
-            view.backgroundColor = .white
-            activityIndicator = UIActivityIndicatorView(style: .gray)
-        }
+        view.backgroundColor = .systemBackground
+        activityIndicator = UIActivityIndicatorView(style: .medium)
         
         activityIndicator.hidesWhenStopped = true
         
@@ -88,23 +83,23 @@ public final class ReviewViewController: UIViewController, WKNavigationDelegate 
         
         loadWebsite()
     }
-
+    
     private func loadWebsite() {
         guard let token = Server.token else {
             return
         }
-
+        
         var request = URLRequest(url: website.url)
-
+        
         request.setValue("Token token=\(token)", forHTTPHeaderField: "Authorization")
         webView?.alpha = 0.0
         webView?.load(request)
     }
-
+    
     @IBAction private func doneButtonPressed(_ sender: UIBarButtonItem) {
         delegate?.reviewViewControllerDidFinish(self)
     }
-
+    
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         UIView.animate(withDuration: 0.5) {
             self.webView.alpha = 1.0
@@ -139,7 +134,7 @@ public final class ReviewViewController: UIViewController, WKNavigationDelegate 
             "bunpro.jp",
             "js.stripe.com",
             "m.stripe.network"
-        ].contains(host)
+            ].contains(host)
     }
     
     private func grammarPointIdentifier(for url: URL?) -> Int? {

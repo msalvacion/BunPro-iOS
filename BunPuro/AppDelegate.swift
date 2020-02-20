@@ -34,15 +34,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         setupTabBarViewController()
 
-        if #available(iOS 13.0, *) {
-            appearanceObservation = UserDefaults
-                .standard
-                .observe(\.userInterfaceStyle, options: [.initial, .new]) { defaults, _ in
-                    application.windows.forEach { window in
-                        window.overrideUserInterfaceStyle = defaults.userInterfaceStyle.systemStyle
-                    }
+        appearanceObservation = UserDefaults
+            .standard
+            .observe(\.userInterfaceStyle, options: [.initial, .new]) { defaults, _ in
+                application.windows.forEach { window in
+                    window.overrideUserInterfaceStyle = defaults.userInterfaceStyle.systemStyle
                 }
-        }
+            }
 
         return true
     }
@@ -82,18 +80,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         database.save()
     }
 
-//    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//        if let dataManager = dataManager {
-//            dataManager.scheduleUpdateProcedure(completion: completionHandler)
-//        } else {
-//            completionHandler(.failed)
-//        }
-//    }
+    //    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    //        if let dataManager = dataManager {
+    //            dataManager.scheduleUpdateProcedure(completion: completionHandler)
+    //        } else {
+    //            completionHandler(.failed)
+    //        }
+    //    }
 
     func application(_ application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
         if let type = NSUserActivity.ActivityType(rawValue: userActivityType) {
             guard let tabbarController = self.window?.rootViewController as? UITabBarController else { return false }
-                tabbarController.selectedIndex = 0
+            tabbarController.selectedIndex = 0
 
             guard let viewCtrl = tabbarController.viewControllers?.first?.content else { return false }
 
@@ -143,58 +141,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     private func setupTabBarViewController() {
         guard let viewControllers = (window?.rootViewController as? UITabBarController)?.viewControllers else { return }
         for (index, viewController) in viewControllers.enumerated() {
-            if #available(iOS 13.0, *) {
-                switch index {
-                case 0:
-                    viewController.tabBarItem = UITabBarItem(
-                        title: L10n.Tabbar.status,
-                        image: .pencilCircle,
-                        selectedImage: .pencilCircleFill
-                    )
+            switch index {
+            case 0:
+                viewController.tabBarItem = UITabBarItem(
+                    title: L10n.Tabbar.status,
+                    image: .pencilCircle,
+                    selectedImage: .pencilCircleFill
+                )
 
-                case 1:
-                    viewController.tabBarItem = UITabBarItem(
-                        title: L10n.Tabbar.search,
-                        image: .magnifyingglassCircle,
-                        selectedImage: .magnifyingglassCircleFill
-                    )
+            case 1:
+                viewController.tabBarItem = UITabBarItem(
+                    title: L10n.Tabbar.search,
+                    image: .magnifyingglassCircle,
+                    selectedImage: .magnifyingglassCircleFill
+                )
 
-                case 2:
-                    viewController.tabBarItem = UITabBarItem(
-                        title: L10n.Tabbar.settings,
-                        image: .ellipsisCircle,
-                        selectedImage: .ellipsisCircleFill
-                    )
+            case 2:
+                viewController.tabBarItem = UITabBarItem(
+                    title: L10n.Tabbar.settings,
+                    image: .ellipsisCircle,
+                    selectedImage: .ellipsisCircleFill
+                )
 
-                default:
-                    break
-                }
-            } else {
-                switch index {
-                case 0:
-                    viewController.tabBarItem = UITabBarItem(
-                        title: L10n.Tabbar.status,
-                        image: Asset.tabDashboardInactive.image,
-                        selectedImage: Asset.tabDashboardActive.image
-                    )
-
-                case 1:
-                    viewController.tabBarItem = UITabBarItem(
-                        title: L10n.Tabbar.search,
-                        image: Asset.tabSearchInactive.image,
-                        selectedImage: Asset.tabSearchActive.image
-                    )
-
-                case 2:
-                    viewController.tabBarItem = UITabBarItem(
-                        title: L10n.Tabbar.settings,
-                        image: Asset.tabSettingsInactive.image,
-                        selectedImage: Asset.tabSettingsActive.image
-                    )
-
-                default:
-                    break
-                }
+            default:
+                break
             }
         }
     }

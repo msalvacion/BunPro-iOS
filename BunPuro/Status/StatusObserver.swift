@@ -19,11 +19,7 @@ class StatusObserver {
     private init() {}
 
     static func newObserver() -> StatusObserverProtocol {
-        if #available(iOS 13.0, *) {
-            return StatusObserverImplementationCombine()
-        } else {
-            return StatusObserverIplementationNotificationCenter()
-        }
+        StatusObserverImplementationCombine()
     }
 }
 

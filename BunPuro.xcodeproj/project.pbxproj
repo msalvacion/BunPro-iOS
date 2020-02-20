@@ -34,7 +34,6 @@
 		2E7B3698208516B200542BB8 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 2E7B3697208516B200542BB8 /* Localizable.stringsdict */; };
 		2E8237EE239401A300438E24 /* SearchTableViewController+ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8237ED239401A300438E24 /* SearchTableViewController+ContextMenu.swift */; };
 		2E8237F0239402E500438E24 /* UIImage+System.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8237EF239402E500438E24 /* UIImage+System.swift */; };
-		2E8237F22394186500438E24 /* SearchableDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8237F12394186500438E24 /* SearchableDataSource.swift */; };
 		2E8237F42394200400438E24 /* SearchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8237F32394200400438E24 /* SearchProvider.swift */; };
 		2E8237F623945FD800438E24 /* GrammarPreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E8237F523945FD800438E24 /* GrammarPreviewViewController.swift */; };
 		2E82B77E2393FD07003AF22C /* TrailingSwipeActionsConfigurationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E82B77D2393FD07003AF22C /* TrailingSwipeActionsConfigurationProvider.swift */; };
@@ -149,7 +148,6 @@
 		2E7B3697208516B200542BB8 /* Localizable.stringsdict */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; path = Localizable.stringsdict; sourceTree = "<group>"; };
 		2E8237ED239401A300438E24 /* SearchTableViewController+ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchTableViewController+ContextMenu.swift"; sourceTree = "<group>"; };
 		2E8237EF239402E500438E24 /* UIImage+System.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+System.swift"; sourceTree = "<group>"; };
-		2E8237F12394186500438E24 /* SearchableDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchableDataSource.swift; sourceTree = "<group>"; };
 		2E8237F32394200400438E24 /* SearchProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProvider.swift; sourceTree = "<group>"; };
 		2E8237F523945FD800438E24 /* GrammarPreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GrammarPreviewViewController.swift; sourceTree = "<group>"; };
 		2E82B77D2393FD07003AF22C /* TrailingSwipeActionsConfigurationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrailingSwipeActionsConfigurationProvider.swift; sourceTree = "<group>"; };
@@ -334,7 +332,6 @@
 				2E8237ED239401A300438E24 /* SearchTableViewController+ContextMenu.swift */,
 				2E8237F523945FD800438E24 /* GrammarPreviewViewController.swift */,
 				2EA29AA62391C4D9003B50A9 /* DiffableSearchDataSource.swift */,
-				2E8237F12394186500438E24 /* SearchableDataSource.swift */,
 				2E8237F32394200400438E24 /* SearchProvider.swift */,
 			);
 			path = Grammar;
@@ -734,7 +731,6 @@
 				A1225EE9226D7DA300EA2885 /* Collection+Review.swift in Sources */,
 				2E0C54021FC8C9CA00697132 /* UpdateGrammarProcedure.swift in Sources */,
 				2E82B77E2393FD07003AF22C /* TrailingSwipeActionsConfigurationProvider.swift in Sources */,
-				2E8237F22394186500438E24 /* SearchableDataSource.swift in Sources */,
 				2E3EE11D1FF4EF870027C924 /* String+Furigana.swift in Sources */,
 				A1D6C14F226B56A200D25DF1 /* Assets.swift in Sources */,
 				2EE0AEB323299F4B00E4BD64 /* Array+Batch.swift in Sources */,
@@ -893,7 +889,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -950,7 +946,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
@@ -975,7 +971,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 549QX23F59;
 				INFOPLIST_FILE = "$(SRCROOT)/BunPuro/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1002,7 +998,7 @@
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = 549QX23F59;
 				INFOPLIST_FILE = "$(SRCROOT)/BunPuro/Supporting Files/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

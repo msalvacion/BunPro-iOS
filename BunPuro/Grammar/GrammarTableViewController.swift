@@ -35,11 +35,7 @@ final class GrammarTableViewController: UITableViewController, GrammarPresenter 
         statusObserver?.willBeginUpdating = { [weak self] in
             let activityIndicator: UIActivityIndicatorView
 
-            if #available(iOS 13.0, *) {
-                activityIndicator = UIActivityIndicatorView(style: .medium)
-            } else {
-                activityIndicator = UIActivityIndicatorView(style: .gray)
-            }
+            activityIndicator = UIActivityIndicatorView(style: .medium)
 
             activityIndicator.startAnimating()
             self?.navigationItem.rightBarButtonItem = UIBarButtonItem(customView: activityIndicator)

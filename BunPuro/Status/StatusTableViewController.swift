@@ -216,17 +216,15 @@ final class StatusTableViewController: UITableViewController {
             }
         }
 
-        if #available(iOS 12.0, *) {
-            switch website {
-            case .study:
-                reviewProcedure.userActivity = NSUserActivity.studyActivity
+        switch website {
+        case .study:
+            reviewProcedure.userActivity = NSUserActivity.studyActivity
 
-            case .cram:
-                reviewProcedure.userActivity = NSUserActivity.cramActivity
+        case .cram:
+            reviewProcedure.userActivity = NSUserActivity.cramActivity
 
-            default:
-                break
-            }
+        default:
+            break
         }
 
         Server.add(procedure: reviewProcedure)

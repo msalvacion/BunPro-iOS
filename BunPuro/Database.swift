@@ -62,11 +62,7 @@ final class Database {
     }()
 
     fileprivate lazy var handler: DatabaseHandler = {
-        if #available(iOS 13, *) {
-            return CombineDatabase(persistantContainer: self.persistantContainer)
-        } else {
-            return PrecedureDatabase(persistantContainer: self.persistantContainer)
-        }
+        CombineDatabase(persistantContainer: self.persistantContainer)
     }()
 
     func save() {
@@ -88,10 +84,8 @@ extension Database: DatabaseHandler {
     func updateAccount(_ account: BPKAccount, completion: (() -> Void)?) {
         handler.updateAccount(account, completion: completion)
 
-        if #available(iOS 13.0, *) {
-            if UserDefaults.standard.userInterfaceStyle == .bunpro {
-                UserDefaults.standard.userInterfaceStyle = .bunpro
-            }
+        if UserDefaults.standard.userInterfaceStyle == .bunpro {
+            UserDefaults.standard.userInterfaceStyle = .bunpro
         }
     }
 
