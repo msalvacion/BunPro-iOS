@@ -13,7 +13,7 @@ public final class SetSettingsProcedure: GroupProcedure {
     public struct Settings {
         public var furigana: FuriganaMode
         public var english: Active
-        public var bunnyMode: State
+        public var bunnyMode: OnOffState
 
         fileprivate var queryItems: [URLQueryItem] {
             return [
@@ -23,7 +23,7 @@ public final class SetSettingsProcedure: GroupProcedure {
             ]
         }
 
-        public init(furigana: FuriganaMode, english: Active, bunnyMode: State) {
+        public init(furigana: FuriganaMode, english: Active, bunnyMode: OnOffState) {
             self.furigana = furigana
             self.english = english
             self.bunnyMode = bunnyMode

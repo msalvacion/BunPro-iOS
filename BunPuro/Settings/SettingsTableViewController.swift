@@ -209,12 +209,12 @@ final class SettingsTableViewController: UITableViewController, SegueHandler {
     private func didSelectBunnySettingsCell(_ cell: UITableViewCell) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let onAction = UIAlertAction(title: State.on.localizedString, style: .default) { _ in
+        let onAction = UIAlertAction(title: OnOffState.on.localizedString, style: .default) { _ in
             self.settings?.bunnyMode = .on
             self.synchronizeSettings()
         }
 
-        let offAction = UIAlertAction(title: State.off.localizedString, style: .default) { _ in
+        let offAction = UIAlertAction(title: OnOffState.off.localizedString, style: .default) { _ in
             self.settings?.bunnyMode = .off
             self.synchronizeSettings()
         }
@@ -288,7 +288,7 @@ final class SettingsTableViewController: UITableViewController, SegueHandler {
 
         guard let furigana = FuriganaMode(rawValue: account.furiganaMode ?? "") else { return }
         let english = account.englishMode ? Active.yes : Active.no
-        let bunnyMode = account.bunnyMode ? State.on : State.off
+        let bunnyMode = account.bunnyMode ? OnOffState.on : OnOffState.off
 
         settings = SetSettingsProcedure.Settings(furigana: furigana, english: english, bunnyMode: bunnyMode)
     }
@@ -360,7 +360,7 @@ extension Active {
     }
 }
 
-extension State {
+extension OnOffState {
     var localizedString: String {
         switch self {
         case .on:

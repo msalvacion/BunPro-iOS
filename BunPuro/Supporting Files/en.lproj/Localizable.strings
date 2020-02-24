@@ -72,6 +72,8 @@
 
 "settings.logout.action" = "Logout";
 
+"settings.review.furigana" = "Furigana";
+
 "shortcut.cram.suggetedphrase" = "Cram time";
 
 "shortcut.cram.title" = "Start cramming";

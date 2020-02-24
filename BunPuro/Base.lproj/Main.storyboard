@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16085" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina5_9" orientation="portrait" appearance="dark"/>
     <dependencies>
-        <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16078.1"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -14,7 +13,7 @@
             <objects>
                 <tableViewController id="OgJ-2b-cKe" userLabel="Status Table View Controller" customClass="StatusTableViewController" customModule="BunPuro" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="zYh-s0-Zmd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="StatusTableViewCell" rowHeight="130" id="VaB-V6-a3h" customClass="StatusTableViewCell" customModule="BunPuro" customModuleProvider="target">
@@ -230,7 +229,7 @@
             <objects>
                 <tableViewController definesPresentationContext="YES" id="9qA-ba-rEL" customClass="SearchTableViewController" customModule="BunPuro" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" id="dZF-AK-4Ds">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="GrammarTeaserCell" rowHeight="92" id="ygK-Hj-gGR" customClass="GrammarTeaserCell" customModule="BunPuro" customModuleProvider="target">
@@ -244,10 +243,10 @@
                                             <rect key="frame" x="15" y="11" width="313" height="70"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="ouV-DG-3f6">
-                                                    <rect key="frame" x="0.0" y="0.0" width="257" height="54.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="281" height="54.666666666666664"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JgB-cu-9Xo">
-                                                            <rect key="frame" x="0.0" y="0.0" width="257" height="26.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="281" height="26.333333333333332"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
                                                             <color key="textColor" name="Tint"/>
                                                             <nil key="highlightedColor"/>
@@ -256,7 +255,7 @@
                                                             </attributedString>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwI-7D-wMw">
-                                                            <rect key="frame" x="0.0" y="34.333333333333336" width="257" height="20.333333333333336"/>
+                                                            <rect key="frame" x="0.0" y="34.333333333333336" width="281" height="20.333333333333336"/>
                                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                                             <color key="textColor" systemColor="secondaryLabelColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -267,7 +266,7 @@
                                                     </subviews>
                                                 </stackView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bunpro-hanko-review-complete_small" translatesAutoresizingMaskIntoConstraints="NO" id="cSf-Yv-V00">
-                                                    <rect key="frame" x="265" y="0.0" width="48" height="48"/>
+                                                    <rect key="frame" x="289" y="0.0" width="24" height="24"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="cSf-Yv-V00" secondAttribute="height" multiplier="1:1" id="LPV-7n-De2"/>
                                                     </constraints>
@@ -364,10 +363,10 @@
             <objects>
                 <tableViewController id="z14-3N-uev" customClass="SettingsTableViewController" customModule="BunPuro" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" layoutMarginsFollowReadableWidth="YES" alwaysBounceVertical="YES" dataMode="static" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="WKV-xq-end">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="729"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="qn0-jz-P9c">
-                            <rect key="frame" x="0.0" y="668" width="375" height="0.0"/>
+                            <rect key="frame" x="0.0" y="648" width="375" height="0.0"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
@@ -631,14 +630,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kgm-Rt-PwO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1533.5999999999999" y="1259.8522167487686"/>
+            <point key="canvasLocation" x="2524" y="1260"/>
         </scene>
         <!--Information Table View Controller-->
         <scene sceneID="TZC-6K-uoI">
             <objects>
-                <tableViewController id="hqB-Oh-NNx" customClass="InformationTableViewController" customModule="BunPuro" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="InformationTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hqB-Oh-NNx" customClass="InformationTableViewController" customModule="BunPuro" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="SYD-AI-FOd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -682,12 +681,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8GG-w5-tck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3319.1999999999998" y="1259.8522167487686"/>
+            <point key="canvasLocation" x="4310" y="1260"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="yl2-sM-qoP">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="49e-Tb-3d3" customClass="MainTabBarViewController" customModule="BunPuro" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBar key="tabBar" contentMode="scaleToFill" translucent="NO" id="W28-zg-YXA">
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -753,12 +752,22 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="z14-3N-uev" kind="relationship" relationship="rootViewController" id="g8t-LW-e6j"/>
+                        <segue destination="Vl8-U2-ATR" kind="relationship" relationship="rootViewController" id="HPD-Jv-54C"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IG2-dZ-DLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="625" y="1260"/>
+        </scene>
+        <!--Settings Hosting Controller-->
+        <scene sceneID="ziZ-0S-KWd">
+            <objects>
+                <hostingController id="Vl8-U2-ATR" customClass="SettingsHostingController" customModule="BunPuro" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="WJh-ly-4GO"/>
+                </hostingController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AYb-Ej-HGs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1534" y="1260"/>
         </scene>
         <!--GrammarTableViewController-->
         <scene sceneID="hyL-nq-Feu">
@@ -786,24 +795,24 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tnF-vv-Rwh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2376.8000000000002" y="1259.8522167487686"/>
+            <point key="canvasLocation" x="3367" y="1260"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="4ZO-BF-k4W"/>
+        <segue reference="BGx-Vr-zzb"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" name="Tint"/>
     <resources>
         <image name="bunpro-hanko-review-complete_small" width="24" height="24"/>
-        <image name="ellipsis.circle" catalog="system" width="64" height="60"/>
-        <image name="ellipsis.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="magnifyingglass.circle" catalog="system" width="64" height="60"/>
-        <image name="magnifyingglass.circle.fill" catalog="system" width="64" height="60"/>
-        <image name="pencil.circle" catalog="system" width="64" height="60"/>
-        <image name="pencil.circle.fill" catalog="system" width="64" height="60"/>
+        <image name="ellipsis.circle" catalog="system" width="128" height="121"/>
+        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass.circle" catalog="system" width="128" height="121"/>
+        <image name="magnifyingglass.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="pencil.circle" catalog="system" width="128" height="121"/>
+        <image name="pencil.circle.fill" catalog="system" width="128" height="121"/>
         <namedColor name="Tint">
             <color red="0.0" green="0.4779999852180481" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="ChN-U9-gMN"/>
-        <segue reference="BGx-Vr-zzb"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" name="Tint"/>
 </document>

@@ -138,6 +138,10 @@ internal enum L10n {
       /// Logout
       internal static let action = L10n.tr("Localizable", "settings.logout.action")
     }
+    internal enum Review {
+      /// Furigana
+      internal static let furigana = L10n.tr("Localizable", "settings.review.furigana")
+    }
   }
 
   internal enum Shortcut {

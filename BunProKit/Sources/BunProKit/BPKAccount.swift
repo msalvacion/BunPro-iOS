@@ -65,7 +65,7 @@ public enum Visible: String, Codable {
     }
 }
 
-public enum State: String, Codable {
+public enum OnOffState: String, Codable {
     case on = "On"
     case off = "Off"
 
@@ -75,8 +75,8 @@ public enum State: String, Codable {
             return
         }
 
-        guard let state = State(rawValue: value) else {
-            logger.warning("Invalid value for \(State.self): \(value)")
+        guard let state = OnOffState(rawValue: value) else {
+            logger.warning("Invalid value for \(OnOffState.self): \(value)")
 
             switch value {
             case #""On""#, "Show", #""Show""#:
@@ -182,7 +182,7 @@ public struct BPKAccount: Codable {
     public let reviewEnglish: Visible
     public let furigana: FuriganaMode
     public let name: String
-    public let bunnyMode: State
+    public let bunnyMode: OnOffState
     public let appearance: Appearance
     public let subscriber: Bool
 }
