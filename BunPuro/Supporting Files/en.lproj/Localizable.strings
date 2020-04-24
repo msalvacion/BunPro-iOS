@@ -13,12 +13,6 @@
 
 "copy.meaning" = "Copy Meaning";
 
-"furigana.off" = "Never";
-
-"furigana.on" = "Always";
-
-"furigana.wanikani" = "WaniKani";
-
 /* Common cancel action */
 "general.cancel" = "Cancel";
 
@@ -70,10 +64,43 @@
 
 "search.grammar.scope.unlearned" = "Unlearned";
 
-"settings.logout.action" = "Logout";
+"settings.actions.logout" = "Logout";
+
+"settings.informstion.about" = "About";
+
+"settings.informstion.community" = "Community";
+
+"settings.informstion.contact" = "Contact";
+
+"settings.informstion.privacy" = "Privacy";
+
+"settings.informstion.terms" = "Terms and Conditions";
+
+"settings.other.appearance" = "Appearance";
+
+"settings.other.appearance.bunpro" = "According to Bunpro";
+
+"settings.other.appearance.dark" = "Dark";
+
+"settings.other.appearance.light" = "Light";
+
+"settings.other.appearance.system" = "System";
+
+"settings.review.bunnymode" = "Bunny Mode";
+
+"settings.review.bunnymode.explaination" = "When Bunny Mode is active, you'll advance to the next review without further confirmation if your answer was correct.";
 
 "settings.review.furigana" = "Furigana";
 
+"settings.review.furigana.off" = "Never";
+
+"settings.review.furigana.on" = "Always";
+
+"settings.review.furigana.wanikani" = "WaniKani";
+
+"settings.review.hideenglish" = "Hide English";
+
+/* - Settings Screen - END */
 "shortcut.cram.suggetedphrase" = "Cram time";
 
 "shortcut.cram.title" = "Start cramming";

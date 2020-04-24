@@ -17,40 +17,35 @@ struct SettingsView: View {
 
     var body: some View {
         Form {
-            Section(footer: Text("When Bunny Mode is active, you'll advance to the next review without further confirmation if your answer was correct.")) {
+            Section(footer: Text("settings.review.bunnymode.explaination")) {
                 PickerCell(
                     "settings.review.furigana",
                     selection: $settingsController.selectedFuriganaOption,
                     options: settingsController.furiganaOptions
                 )
-//                Picker(selection: $settingsController.selectedFuriganaOption, label: Text("settings.review.furigana").foregroundColor(.accentColor)) {
-//                    ForEach(settingsController.furiganaOptions) { key in
-//                        Text(key)
-//                    }
-//                }
 
                 Toggle(isOn: $settingsController.isEnglishHidden) {
-                    Text("Hide English")
+                    Text("settings.review.hideenglish")
                 }.foregroundColor(.accentColor)
 
                 Toggle(isOn: $settingsController.isBunnyModeOn) {
-                    Text("Bunny Mode")
+                    Text("settings.review.bunnymode")
                 }.foregroundColor(.accentColor)
             }
 
             Section {
-                Button("About") {
+                Button("settings.informstion.about") {
                     self.displayedCategory = .about
                 }
-                Button("Privacy") {
+                Button("settings.informstion.privacy") {
                     self.displayedCategory = .privacy
                 }
-                Button("Terms and Conditions") {
+                Button("settings.informstion.terms") {
                     self.displayedCategory = .terms
                 }
-                Button("Contact") {
+                Button("settings.informstion.contact") {
                 }
-                Button("Community") {
+                Button("settings.informstion.community") {
                     guard let url = URL(string: "https://community.bunpro.jp/") else { return }
 
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -58,16 +53,15 @@ struct SettingsView: View {
             }.foregroundColor(.accentColor)
 
             Section(footer: Text("")) {
-                Picker(selection: $settingsController.selectedAppearanceOption, label: Text("Appearance").foregroundColor(.accentColor)) {
-                    ForEach(0 ..< SettingsController.appearanceOptions.count) {
-                        Text(SettingsController.appearanceOptions[$0])
-                            .tag($0)
-                    }
-                }
+                PickerCell(
+                    "settings.other.appearance",
+                    selection: $settingsController.selectedAppearanceOption,
+                    options: settingsController.appearanceOptions
+                )
             }
 
             Section {
-                Button("Logout") {
+                Button("settings.actions.logout") {
                     Server.logout()
                 }.foregroundColor(.red)
             }
@@ -118,11 +112,6 @@ struct PickerCell: View {
                 } + [.cancel()]
             )
         }
-//        Picker(selection: selection, label: Text(label).foregroundColor(.accentColor)) {
-//            ForEach(options) { key in
-//                Text(key)
-//            }
-//        }
     }
 
     init(_ label: LocalizedStringKey, selection: Binding<Int>, options: [LocalizedStringKey]) {
@@ -134,27 +123,6 @@ struct PickerCell: View {
 
 struct SettingsView_Previews: PreviewProvider {
     static var previews: some View {
-        SettingsView(settingsController: SettingsController())
+        SettingsView(settingsController: SettingsController(presentingViewController: UIViewController()))
     }
 }
-
-/*
- var url: URL? {
-     switch self {
-     case .community:
-         return URL(string: "https://community.bunpro.jp/")
-
-     case .about:
-         return nil // URL(string: "https://bunpro.jp/about")
-
-     case .contact:
-         return URL(string: "https://bunpro.jp/contact")
-
-     case .privacy:
-         return nil // URL(string: "https://bunpro.jp/privacy")
-
-     case .terms:
-         return nil // URL(string: "https://bunpro.jp/terms")
-     }
- }
- */

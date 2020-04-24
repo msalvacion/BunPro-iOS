@@ -7,7 +7,17 @@ import SwiftUI
 import UIKit
 
 class SettingsHostingController: UIHostingController<SettingsView> {
+    private let settingsController: SettingsController!
+
     required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder, rootView: SettingsView(settingsController: SettingsController()))
+        let root = UIApplication.shared.windows.first?.rootViewController
+        settingsController = SettingsController(presentingViewController: root)
+        super.init(coder: aDecoder, rootView: SettingsView(settingsController: settingsController))
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        settingsController.fetch()
     }
 }

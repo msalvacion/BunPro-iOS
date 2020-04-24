@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static var database: Database { (UIApplication.shared.delegate as! AppDelegate).database }
 
     private var modelName: String = "BunPro"
-    lazy var database = Database(modelName: modelName)
+    private lazy var database = Database(modelName: modelName)
 
     private var dataManager: DataManager?
     private var appearanceObservation: NSKeyValueObservation?

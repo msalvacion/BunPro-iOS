@@ -3,6 +3,7 @@
 //  Copyright © 2017 Andreas Braun. All rights reserved.
 //
 
+import Combine
 import UIKit
 import Foundation
 import KeychainAccess
@@ -50,6 +51,25 @@ public enum Server {
 
     public static func add(procedure: Procedure) {
         NetworkHandler.shared.queue.addOperation(procedure)
+    }
+}
+
+extension Server {
+    public static func updateStatus(from presentingViewController: UIViewController) -> Future<(BPKAccount, [BPKReview]), Error> {
+        Future { promise in
+            let procedure = StatusProcedure(presentingViewController: presentingViewController) { (account, reviews, error) in
+                
+                if let error = error {
+                    promise(.failure(error))
+                } else if let account = account, let reviews = reviews {
+                    promise(.success((account, reviews)))
+                } else {
+                    promise(.failure(ServerError.unknown))
+                }
+            }
+            
+            Server.add(procedure: procedure)
+        }
     }
 }
 

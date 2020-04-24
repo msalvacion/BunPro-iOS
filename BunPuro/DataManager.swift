@@ -4,6 +4,7 @@
 //
 
 import BunProKit
+import Combine
 import CoreData
 import Foundation
 import SafariServices
@@ -13,43 +14,50 @@ final class DataManager {
     let presentingViewController: UIViewController
     let database: Database
 
-    private var loginObserver: NotificationToken?
-    private var logoutObserver: NotificationToken?
-    private var backgroundObserver: NotificationToken?
+    private var loginObserver: AnyCancellable?
+    private var logoutObserver: AnyCancellable?
+    private var backgroundObserver: AnyCancellable?
+
+    private var subscribers = Set<AnyCancellable>()
 
     deinit {
-        if loginObserver != nil {
-            NotificationCenter.default.removeObserver(loginObserver!)
-        }
-
-        if logoutObserver != nil {
-            NotificationCenter.default.removeObserver(logoutObserver!)
-        }
-
-        if backgroundObserver != nil {
-            NotificationCenter.default.removeObserver(backgroundObserver!)
-        }
+        loginObserver?.cancel()
+        logoutObserver?.cancel()
+        backgroundObserver?.cancel()
     }
 
     init(presentingViewController: UIViewController, database: Database) {
         self.presentingViewController = presentingViewController
         self.database = database
 
-        loginObserver = NotificationCenter.default.observe(name: .ServerDidLoginNotification, object: nil, queue: OperationQueue.main) { [weak self] _ in
-            self?.updateGrammarDatabase()
-        }
+        loginObserver = NotificationCenter
+            .default
+            .publisher(for: .ServerDidLoginNotification)
+            .receive(on: RunLoop.main)
+            .print()
+            .sink {  [weak self] _ in
+                self?.updateGrammarDatabase()
+            }
 
-        logoutObserver = NotificationCenter.default.observe(name: .ServerDidLogoutNotification, object: nil, queue: nil) { [weak self] _ in
-            DispatchQueue.main.async {
+        logoutObserver = NotificationCenter
+            .default
+            .publisher(for: .ServerDidLogoutNotification)
+            .receive(on: RunLoop.main)
+            .print()
+            .sink {  [weak self] _ in
                 self?.database.resetReviews()
                 self?.scheduleUpdateProcedure()
             }
-        }
 
-        backgroundObserver = NotificationCenter.default.observe(name: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
-            self?.stopStatusUpdates()
-            self?.isUpdating = false
-        }
+        backgroundObserver = NotificationCenter
+            .default
+            .publisher(for: UIApplication.didEnterBackgroundNotification)
+            .receive(on: RunLoop.main)
+            .print()
+            .sink {  [weak self] _ in
+                self?.stopStatusUpdates()
+                self?.isUpdating = false
+            }
     }
 
     // Status Updates
@@ -68,31 +76,26 @@ final class DataManager {
 
     func startStatusUpdates() {
         if startImmediately {
-            startImmediately = false
+            startImmediately.toggle()
             scheduleUpdateProcedure()
         }
 
-        guard !isUpdating else { return }
+        guard isUpdating == false else { return }
 
         stopStatusUpdates()
 
-        statusUpdateTimer = Timer.scheduledTimer(withTimeInterval: updateTimeInterval, repeats: true) { _ in
-            guard !self.isUpdating else { return }
-
-            self.stopStatusUpdates()
-
-            self.statusUpdateTimer = Timer(timeInterval: self.updateTimeInterval, repeats: true) { _ in
-                guard !self.isUpdating else { return }
-                self.scheduleUpdateProcedure()
+        Timer
+            .publish(every: updateTimeInterval, on: RunLoop.main, in: .common)
+            .print()
+            .drop { [weak self] _ in self?.isUpdating == true }
+            .sink { [weak self] _ in
+                self?.scheduleUpdateProcedure()
             }
-
-            RunLoop.main.add(self.statusUpdateTimer!, forMode: RunLoop.Mode.default)
-        }
+            .store(in: &subscribers)
     }
 
     func stopStatusUpdates() {
-        statusUpdateTimer?.invalidate()
-        statusUpdateTimer = nil
+        subscribers.forEach { $0.cancel() }
     }
 
     func immidiateStatusUpdate() {
@@ -140,24 +143,26 @@ final class DataManager {
     func scheduleUpdateProcedure(completion: ((UIBackgroundFetchResult) -> Void)? = nil) {
         self.isUpdating = true
 
-        let statusProcedure = StatusProcedure(presentingViewController: presentingViewController) { user, reviews, _ in
-            if let user = user {
-                self.database.updateAccount(user) {
-                    DispatchQueue.main.async {
-                        self.isUpdating = false
-                    }
-                }
-            }
+        Server
+            .updateStatus(from: presentingViewController)
+            .receive(on: RunLoop.main)
+            .sink(
+                receiveCompletion: { completion in
+                    log.info(completion)
+                },
+                receiveValue: { [weak self] account, reviews in
+                    guard let self = self else { return }
 
-            DispatchQueue.main.async {
-                if let reviews = reviews {
+                    // update the account
+                    self.database.updateAccount(account, completion: nil)
+
+                    // update the reviews
                     let oldReviewsCount = AppDelegate.badgeNumber()?.intValue ?? 0
 
                     self.database.updateReviews(reviews) {
                         self.isUpdating = false
 
-                        self.startStatusUpdates()
-
+                        // update pending review modifications
                         if self.hasPendingReviewModification {
                             self.hasPendingReviewModification = false
                             NotificationCenter.default.post(name: .BunProDidModifyReview, object: nil)
@@ -177,10 +182,8 @@ final class DataManager {
                         }
                     }
                 }
-            }
-        }
-
-        Server.add(procedure: statusProcedure)
+            )
+            .store(in: &subscribers)
     }
 }
 

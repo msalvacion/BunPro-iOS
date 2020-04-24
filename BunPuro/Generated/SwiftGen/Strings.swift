@@ -32,15 +32,6 @@ internal enum L10n {
     internal static let meaning = L10n.tr("Localizable", "copy.meaning")
   }
 
-  internal enum Furigana {
-    /// Never
-    internal static let off = L10n.tr("Localizable", "furigana.off")
-    /// Always
-    internal static let on = L10n.tr("Localizable", "furigana.on")
-    /// WaniKani
-    internal static let wanikani = L10n.tr("Localizable", "furigana.wanikani")
-  }
-
   internal enum General {
     /// Cancel
     internal static let cancel = L10n.tr("Localizable", "general.cancel")
@@ -134,13 +125,55 @@ internal enum L10n {
   }
 
   internal enum Settings {
-    internal enum Logout {
+    internal enum Actions {
       /// Logout
-      internal static let action = L10n.tr("Localizable", "settings.logout.action")
+      internal static let logout = L10n.tr("Localizable", "settings.actions.logout")
+    }
+    internal enum Informstion {
+      /// About
+      internal static let about = L10n.tr("Localizable", "settings.informstion.about")
+      /// Community
+      internal static let community = L10n.tr("Localizable", "settings.informstion.community")
+      /// Contact
+      internal static let contact = L10n.tr("Localizable", "settings.informstion.contact")
+      /// Privacy
+      internal static let privacy = L10n.tr("Localizable", "settings.informstion.privacy")
+      /// Terms and Conditions
+      internal static let terms = L10n.tr("Localizable", "settings.informstion.terms")
+    }
+    internal enum Other {
+      /// Appearance
+      internal static let appearance = L10n.tr("Localizable", "settings.other.appearance")
+      internal enum Appearance {
+        /// According to Bunpro
+        internal static let bunpro = L10n.tr("Localizable", "settings.other.appearance.bunpro")
+        /// Dark
+        internal static let dark = L10n.tr("Localizable", "settings.other.appearance.dark")
+        /// Light
+        internal static let light = L10n.tr("Localizable", "settings.other.appearance.light")
+        /// System
+        internal static let system = L10n.tr("Localizable", "settings.other.appearance.system")
+      }
     }
     internal enum Review {
+      /// Bunny Mode
+      internal static let bunnymode = L10n.tr("Localizable", "settings.review.bunnymode")
       /// Furigana
       internal static let furigana = L10n.tr("Localizable", "settings.review.furigana")
+      /// Hide English
+      internal static let hideenglish = L10n.tr("Localizable", "settings.review.hideenglish")
+      internal enum Bunnymode {
+        /// When Bunny Mode is active, you'll advance to the next review without further confirmation if your answer was correct.
+        internal static let explaination = L10n.tr("Localizable", "settings.review.bunnymode.explaination")
+      }
+      internal enum Furigana {
+        /// Never
+        internal static let off = L10n.tr("Localizable", "settings.review.furigana.off")
+        /// Always
+        internal static let on = L10n.tr("Localizable", "settings.review.furigana.on")
+        /// WaniKani
+        internal static let wanikani = L10n.tr("Localizable", "settings.review.furigana.wanikani")
+      }
     }
   }
 

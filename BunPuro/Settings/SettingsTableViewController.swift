@@ -267,7 +267,7 @@ final class SettingsTableViewController: UITableViewController, SegueHandler {
     private func didSelectLogoutCell(_ cell: UITableViewCell) {
         let controller = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
 
-        let logoutAction = UIAlertAction(title: L10n.Settings.Logout.action, style: .destructive) { _ in
+        let logoutAction = UIAlertAction(title: L10n.Settings.Actions.logout, style: .destructive) { _ in
             Server.logout()
             self.tabBarController?.selectedIndex = 0
         }
@@ -376,13 +376,13 @@ extension FuriganaMode {
     var localizedString: String {
         switch self {
         case .on:
-            return L10n.Furigana.on
+            return L10n.Settings.Review.Furigana.on
 
         case .off:
-            return L10n.Furigana.off
+            return L10n.Settings.Review.Furigana.off
 
         case .wanikani:
-            return L10n.Furigana.wanikani
+            return L10n.Settings.Review.Furigana.wanikani
         }
     }
 }

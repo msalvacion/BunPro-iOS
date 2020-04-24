@@ -5,7 +5,7 @@
 
 import Foundation
 
-public enum Active: String, Codable {
+public enum Active: String, Codable, CaseIterable {
     case yes = "Yes"
     case no = "No"
 
@@ -32,7 +32,7 @@ public enum Active: String, Codable {
     }
 }
 
-public enum Visible: String, Codable {
+public enum Visible: String, Codable, CaseIterable {
     case show = "Show"
     case hide = "Hide"
     case minimal = "Minimal"
@@ -65,7 +65,7 @@ public enum Visible: String, Codable {
     }
 }
 
-public enum OnOffState: String, Codable {
+public enum OnOffState: String, Codable, CaseIterable {
     case on = "On"
     case off = "Off"
 
@@ -92,7 +92,7 @@ public enum OnOffState: String, Codable {
     }
 }
 
-public enum FuriganaMode: String, Codable {
+public enum FuriganaMode: String, Codable, CaseIterable {
     case on = "Show"
     case off = "Hide"
     case wanikani = "Wanikani"
@@ -142,7 +142,7 @@ public enum FuriganaMode: String, Codable {
     }
 }
 
-public enum Appearance: String, Codable {
+public enum Appearance: String, Codable, CaseIterable {
     case light
     case dark
     
